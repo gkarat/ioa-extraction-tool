@@ -1,10 +1,10 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
-const common = require('./webpack.common.js');
-const { stylePaths } = require("./stylePaths");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
+const { stylePaths } = require('./stylePaths');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common('production'), {
   mode: 'production',
@@ -14,26 +14,26 @@ module.exports = merge(common('production'), {
       new TerserJSPlugin({}),
       new CssMinimizerPlugin({
         minimizerOptions: {
-          preset: ['default', { mergeLonghand: false }]
-        }
-      })
+          preset: ['default', { mergeLonghand: false }],
+        },
+      }),
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: '[name].css',
-      chunkFilename: '[name].bundle.css'
-    })
+      chunkFilename: '[name].bundle.css',
+    }),
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
         include: [
-          ...stylePaths
+          ...stylePaths,
         ],
-        use: [MiniCssExtractPlugin.loader, 'css-loader']
-      }
-    ]
-  }
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+    ],
+  },
 });

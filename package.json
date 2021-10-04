@@ -1,9 +1,6 @@
 {
-  "name": "patternfly-seed",
-  "version": "0.0.2",
-  "description": "An open source build scaffolding utility for web apps.",
-  "repository": "https://github.com/patternfly/patternfly-react-seed.git",
-  "homepage": "https://patternfly-react-seed.surge.sh",
+  "name": "insights-archive-guru",
+  "version": "0.0.1",
   "license": "MIT",
   "private": true,
   "scripts": {

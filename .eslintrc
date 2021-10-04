@@ -1,4 +1,5 @@
 {
+  "root": true,
   // tells eslint to use the TypeScript parser
   "parser": "@typescript-eslint/parser",
   // tell the TypeScript parser that we want to use JSX syntax
@@ -14,6 +15,7 @@
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:prettier/recommended",
     "plugin:@typescript-eslint/recommended"
   ],
   "globals": {
@@ -32,6 +34,7 @@
   },
   // includes the typescript specific rules found here: https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/eslint-plugin#supported-rules
   "plugins": [
+    "prettier",
     "@typescript-eslint",
     "react-hooks",
     "eslint-plugin-react-hooks"
@@ -41,10 +44,10 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/interface-name-prefix": "off",
-    "prettier/prettier": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "prettier/prettier": ["error", { "singleQuote": true }]
   },
   "env": {
     "browser": true,
