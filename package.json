@@ -41,9 +41,10 @@
     "css-minimizer-webpack-plugin": "^3.0.1",
     "dotenv-webpack": "^7.0.3",
     "enzyme": "^3.11.0",
-    "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
     "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
@@ -52,7 +53,7 @@
     "jest": "^27.0.4",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.3.1",
-    "prettier": "^2.3.1",
+    "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "raw-loader": "^4.0.2",
     "react-axe": "^3.5.4",
@@ -82,7 +83,6 @@
     "@storybook/builder-webpack5": "^6.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-router-last-location": "^2.0.1",
     "sirv-cli": "^1.0.12"
   }
 }
