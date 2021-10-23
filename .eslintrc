@@ -47,7 +47,8 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "react/prop-types": "off",
-    "prettier/prettier": ["error", { "singleQuote": true }]
+    "prettier/prettier": ["error", { "singleQuote": true }],
+    "no-undef": "error"
   },
   "env": {
     "browser": true,

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 
-import { QueryWizard } from '@app/QueryWizard/QueryWizard';
+import WizardPage from './QueryWizard';
 import { NotFound } from '@app/NotFound/NotFound';
 import { useDocumentTitle } from '@app/utils/useDocumentTitle';
 
@@ -28,7 +28,7 @@ export type AppRouteConfig = IAppRoute | IAppRouteGroup;
 
 const routes: AppRouteConfig[] = [
   {
-    component: QueryWizard,
+    component: WizardPage,
     exact: true,
     label: 'Create query',
     path: '/query',
