@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Route, RouteComponentProps, Switch } from 'react-router-dom';
 
-import WizardPage from './QueryWizard';
-import { NotFound } from '@app/NotFound/NotFound';
-import { useDocumentTitle } from '@app/utils/useDocumentTitle';
+import WizardPage from './components/WizardPage/WizardPage';
+import { NotFound } from './components/NotFound/NotFound';
+import { useDocumentTitle } from './utils/useDocumentTitle';
 
 export interface IAppRoute {
   label?: string; // Excluding the label will exclude the route from the nav sidebar in AppLayout

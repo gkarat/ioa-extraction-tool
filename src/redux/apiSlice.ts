@@ -4,9 +4,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from './store';
 import { ClusterParameters, Item } from './wizardSlice';
 
+import totalResponse from '../../server/total';
+import clustersResponse from '../../server/clusters';
+
 interface ApiSliceState {
   wizard: {
     options: ClusterParameters;
+    total: number;
+    clusters: Array<ClusterParameters>;
   };
 }
 
@@ -23,11 +28,13 @@ const initialState: ApiSliceState = {
       network: [],
       install: [],
     },
+    total: totalResponse.total,
+    clusters: clustersResponse.clusters,
   },
 };
 
 export const apiSlice = createSlice({
-  name: 'api',
+  name: 'apiMock',
   initialState,
   reducers: {
     updateOptions: (state, action: PayloadAction<ClusterParameters>) => {
@@ -42,12 +49,20 @@ export const apiSlice = createSlice({
   },
 });
 
+// actions
 export const { updateOptions, updateOptionsComponent } = apiSlice.actions;
+
+// selectors
 export const selectOptions = (state: RootState): ClusterParameters =>
-  state.api.wizard.options;
+  state.apiMock.wizard.options;
 export const selectOptionsComponent =
   (component: string) =>
   (state: RootState): Array<Item> =>
-    state.api.wizard.options[component];
+    state.apiMock.wizard.options[component];
+export const selectTotal = (state: RootState): number =>
+  state.apiMock.wizard.total;
+export const selectCluters = (state: RootState): Array<ClusterParameters> =>
+  state.apiMock.wizard.clusters;
 
+// reducer
 export default apiSlice.reducer;

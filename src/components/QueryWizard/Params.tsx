@@ -3,8 +3,6 @@ import {
   Flex,
   FlexItem,
   Form,
-  FormGroup,
-  Radio,
   Text,
   TextContent,
   Title,
@@ -12,12 +10,12 @@ import {
 
 import MultiSelect from './MultiSelect';
 import { useAppSelector } from '../../redux/hooks';
-import { selectForms } from '../../redux/wizardSlice';
+import { selectMultiselectForms } from '../../redux/wizardSlice';
 import Managed from './Managed';
 import LastCheckIn from './LastCheckIn';
 
 const Params = (): React.FC => {
-  const forms = useAppSelector(selectForms);
+  const forms = useAppSelector(selectMultiselectForms);
 
   return (
     <div id="wizard-params-content">
@@ -28,7 +26,7 @@ const Params = (): React.FC => {
           will show all the clusters that meet your parameters.
         </Text>
       </TextContent>
-      <Form style={{ marginTop: '2rem' }}>
+      <Form style={{ marginTop: '1rem' }}>
         <Flex>
           <FlexItem>
             <Flex direction={{ default: 'column' }}>
@@ -37,6 +35,7 @@ const Params = (): React.FC => {
                   key={f.title}
                   component={f.component}
                   title={f.title}
+                  required={f.isRequired}
                 />
               ))}
               <Managed />

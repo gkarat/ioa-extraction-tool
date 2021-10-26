@@ -8,7 +8,7 @@ import {
   Title,
 } from '@patternfly/react-core';
 import React from 'react';
-import { QueryWizard } from './QueryWizard';
+import QueryWizard from '../QueryWizard/QueryWizard';
 
 const WizardPage = (): React.FC => (
   <Page mainContainerId="wizard-page-content">

@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import wizardReducer from './wizardSlice';
 import apiReducer from './apiSlice';
+import clustersTableReducer from '../components/ClustersTable/clustersTableSlice';
 
 const store = configureStore({
   reducer: {
     wizard: wizardReducer,
-    api: apiReducer,
+    apiMock: apiReducer,
+    clustersTable: clustersTableReducer,
   },
 });
 

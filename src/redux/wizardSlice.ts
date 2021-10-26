@@ -11,6 +11,19 @@ type AccountName = string;
 type NetworkType = string;
 type InstallType = string;
 type LastCheckIn = Date;
+type Managed = 'all' | 'non-managed' | 'managed';
+
+export {
+  Version,
+  ClusterPlatform,
+  CustomerSuccessAssociate,
+  Ebs,
+  AccountName,
+  NetworkType,
+  InstallType,
+  LastCheckIn,
+  Managed,
+};
 
 type Description = React.ReactNode;
 
@@ -22,11 +35,12 @@ export type Item<T> =
   | T;
 
 export type ClusterParameters = {
+  uuid: string;
   version: Array<Item<Version>>;
   desiredVersion: Array<Item<Version>>;
   initialVersion: Array<Item<Version>>;
   platform: Array<Item<ClusterPlatform>>;
-  managed: string;
+  managed: Managed;
   associate: Array<Item<CustomerSuccessAssociate>>;
   ebs: Array<Item<Ebs>>;
   account: Array<Item<AccountName>>;
@@ -38,12 +52,15 @@ export type ClusterParameters = {
 export type Form = {
   title: string;
   component: string;
+  isRequired: boolean;
 };
 
 interface WizardState {
   params: ClusterParameters;
   // multiselect forms
-  forms: Array<Form>;
+  multiselectForms: Array<Form>;
+  radioForms: Array<Form>;
+  current: number;
   submitted: boolean;
 }
 
@@ -61,8 +78,8 @@ const initialState: WizardState = {
     install: [],
     lastCheckIn: 'all',
   },
-  forms: [
-    { title: 'Version', component: 'version' },
+  multiselectForms: [
+    { title: 'Version', component: 'version', isRequired: true },
     { title: 'Desired version', component: 'desiredVersion' },
     { title: 'Initial version', component: 'initialVersion' },
     { title: 'Platform', component: 'platform' },
@@ -72,6 +89,11 @@ const initialState: WizardState = {
     { title: 'Network type', component: 'network' },
     { title: 'Install type', component: 'install' },
   ],
+  radioForms: [
+    { title: 'Managed by Red Hat', component: 'managed' },
+    { title: 'Last check in', component: 'lastCheckIn' },
+  ],
+  current: 1,
   submitted: false,
 };
 
@@ -91,11 +113,21 @@ export const wizardSlice = createSlice({
     resetWizard: (state) => {
       Object.assign(state, initialState);
     },
+    updateCurrent: (state, action: PayloadAction<number>) => {
+      state.current = action.payload;
+    },
   },
 });
 
-export const { updateParams, updateParamsComponent, resetWizard } =
-  wizardSlice.actions;
+// actions
+export const {
+  updateParams,
+  updateParamsComponent,
+  resetWizard,
+  updateCurrent,
+} = wizardSlice.actions;
+
+// selectors
 export const selectParams = (state: RootState): ClusterParameters =>
   state.wizard.params;
 export const selectSubmitted = (state: RootState): boolean =>
@@ -104,6 +136,11 @@ export const selectParamsComponent =
   (component: string) =>
   (state: RootState): Array<Item> =>
     state.wizard.params[component];
-export const selectForms = (state: RootState): Array<Form> =>
-  state.wizard.forms;
+export const selectMultiselectForms = (state: RootState): Array<Form> =>
+  state.wizard.multiselectForms;
+export const selectRadioForms = (state: RootState): Array<Form> =>
+  state.wizard.radioForms;
+export const selectCurrent = (state: RootState): number => state.wizard.current;
+
+// reducer
 export default wizardSlice.reducer;

@@ -20,16 +20,17 @@ import {
 interface MultiSelectProps {
   component: string;
   title: string;
+  required: boolean;
 }
 
 const MultiSelect = ({
   component,
   title,
+  required,
 }: MultiSelectProps): React.FC<MultiSelectProps> => {
   const dispatch = useAppDispatch();
   const params = useAppSelector(selectParamsComponent(component));
   const options = useAppSelector(selectOptionsComponent(component));
-  console.log(component, params, options);
   const [isOpen, setIsOpen] = useState(false);
 
   const onToggle = (isOpen) => {
@@ -58,12 +59,11 @@ const MultiSelect = ({
   };
 
   const onClear = () => {
-    console.log(component);
     dispatch(updateParamsComponent({ component, params: [] }));
   };
 
   return (
-    <FormGroup label={title}>
+    <FormGroup label={title} isRequired={required}>
       <Select
         aria-label={`${capitalize(component)} form selection`}
         chipGroupProps={{

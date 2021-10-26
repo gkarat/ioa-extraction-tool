@@ -12,7 +12,7 @@ const Managed = (): React.FC => {
   const parameter = useAppSelector(selectParamsComponent('managed'));
 
   return (
-    <FormGroup label="Managed by Red Hat" isRequired>
+    <FormGroup label="Managed by Red Hat">
       <Flex>
         <Radio
           id="radio-managed-all"
