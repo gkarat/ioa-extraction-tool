@@ -1,16 +1,13 @@
 import React, { Suspense } from 'react';
 import { Bullseye, Spinner, Wizard } from '@patternfly/react-core';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   selectCurrent,
   selectParamsComponent,
   updateCurrent,
-} from '../../redux/wizardSlice';
-import {
-  selectSelected,
-  selectUuidSelected,
-} from '../ClustersTable/clustersTableSlice';
+} from '../../reducers/wizard/params';
+import { selectSelected } from '../../reducers/wizard/sample';
 
 const SampleContent = React.lazy(
   () => import(/* webpackChunkName: "SampleContent" */ './Sample')

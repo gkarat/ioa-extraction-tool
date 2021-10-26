@@ -10,12 +10,12 @@ import {
 import {
   selectOptionsComponent,
   updateOptionsComponent,
-} from '../../redux/apiSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+} from '../../reducers/api';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   selectParamsComponent,
   updateParamsComponent,
-} from '../../redux/wizardSlice';
+} from '../../reducers/wizard/params';
 
 interface MultiSelectProps {
   component: string;

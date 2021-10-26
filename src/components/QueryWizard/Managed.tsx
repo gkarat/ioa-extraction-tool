@@ -1,11 +1,11 @@
-import { Flex, FormGroup, Radio } from '@patternfly/react-core';
 import React from 'react';
+import { Flex, FormGroup, Radio } from '@patternfly/react-core';
 
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   selectParamsComponent,
   updateParamsComponent,
-} from '../../redux/wizardSlice';
+} from '../../reducers/wizard/params';
 
 const Managed = (): React.FC => {
   const dispatch = useAppDispatch();

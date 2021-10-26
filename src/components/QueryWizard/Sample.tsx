@@ -1,5 +1,6 @@
 import React from 'react';
 import { Text, TextContent, Title } from '@patternfly/react-core';
+
 import ClustersTable from '../ClustersTable/ClustersTable';
 
 const SampleContent = (): React.FC => {

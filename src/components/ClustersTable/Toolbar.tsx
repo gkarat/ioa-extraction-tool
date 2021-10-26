@@ -1,3 +1,4 @@
+import React, { FormEventHandler, useState } from 'react';
 import {
   InputGroup,
   Pagination,
@@ -14,14 +15,13 @@ import {
   ToolbarItemVariant,
   ToolbarToggleGroup,
 } from '@patternfly/react-core';
-import React, { FormEventHandler, useState } from 'react';
 
 import {
   selectOptionsComponent,
   selectTotal,
   updateOptionsComponent,
-} from '../../redux/apiSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+} from '../../reducers/api';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   FILTERS,
   resetFilter,
@@ -30,7 +30,7 @@ import {
   selectFilters,
   updateActiveToggle,
   updateFilters,
-} from './clustersTableSlice';
+} from '../../reducers/wizard/sample';
 
 const TableToolbar = (): React.FC => {
   const dispatch = useAppDispatch();

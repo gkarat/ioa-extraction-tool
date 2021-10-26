@@ -97,8 +97,8 @@ const initialState: WizardState = {
   submitted: false,
 };
 
-export const wizardSlice = createSlice({
-  name: 'wizard',
+export const paramsSlice = createSlice({
+  name: 'params',
   initialState,
   reducers: {
     updateParams: (state, action: PayloadAction<ClusterParameters>) => {
@@ -118,29 +118,29 @@ export const wizardSlice = createSlice({
     },
   },
 });
-
 // actions
 export const {
   updateParams,
   updateParamsComponent,
   resetWizard,
   updateCurrent,
-} = wizardSlice.actions;
+} = paramsSlice.actions;
 
 // selectors
 export const selectParams = (state: RootState): ClusterParameters =>
-  state.wizard.params;
+  state.wizard.params.params;
 export const selectSubmitted = (state: RootState): boolean =>
-  state.wizard.submitted;
+  state.wizard.params.submitted;
 export const selectParamsComponent =
   (component: string) =>
   (state: RootState): Array<Item> =>
-    state.wizard.params[component];
+    state.wizard.params.params[component];
 export const selectMultiselectForms = (state: RootState): Array<Form> =>
-  state.wizard.multiselectForms;
+  state.wizard.params.multiselectForms;
 export const selectRadioForms = (state: RootState): Array<Form> =>
-  state.wizard.radioForms;
-export const selectCurrent = (state: RootState): number => state.wizard.current;
+  state.wizard.params.radioForms;
+export const selectCurrent = (state: RootState): number =>
+  state.wizard.params.current;
 
 // reducer
-export default wizardSlice.reducer;
+export default paramsSlice.reducer;

@@ -2,7 +2,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from './store';
-import { ClusterParameters, Item } from './wizardSlice';
+import { ClusterParameters, Item } from './wizard';
 
 import totalResponse from '../../server/total';
 import clustersResponse from '../../server/clusters';

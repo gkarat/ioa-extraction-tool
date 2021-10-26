@@ -9,8 +9,8 @@ import {
 } from '@patternfly/react-core';
 
 import MultiSelect from './MultiSelect';
-import { useAppSelector } from '../../redux/hooks';
-import { selectMultiselectForms } from '../../redux/wizardSlice';
+import { useAppSelector } from '../../store/hooks';
+import { selectMultiselectForms } from '../../reducers/wizard/params';
 import Managed from './Managed';
 import LastCheckIn from './LastCheckIn';
 

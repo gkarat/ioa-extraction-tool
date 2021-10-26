@@ -9,8 +9,8 @@ uuid: string;
   limit: number;
   offset: number; */
 
-import { ClusterParameters } from '../../redux/wizardSlice';
-import { ClustersTableFilters } from './clustersTableSlice';
+import { ClusterParameters } from '../../reducers/wizard/params';
+import { ClustersTableFilters } from '../../reducers/wizard/sample';
 
 const passFilters = (
   cluster: ClusterParameters,

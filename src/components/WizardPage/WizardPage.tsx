@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Page,
   PageSection,
@@ -7,7 +8,7 @@ import {
   TextContent,
   Title,
 } from '@patternfly/react-core';
-import React from 'react';
+
 import QueryWizard from '../QueryWizard/QueryWizard';
 
 const WizardPage = (): React.FC => (

@@ -6,17 +6,6 @@ import {
   TableVariant,
   cellWidth,
 } from '@patternfly/react-table';
-
-import { selectCluters } from '../../redux/apiSlice';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import {
-  chooseCluster,
-  selectCluster,
-  selectFilters,
-  selectSelected,
-} from './clustersTableSlice';
-import { paramsMapping, passFilters } from './helpers';
-import { ClusterParameters } from '../../redux/wizardSlice';
 import {
   TextContent,
   TextList,
@@ -24,6 +13,17 @@ import {
   TextListItemVariants,
   TextListVariants,
 } from '@patternfly/react-core';
+
+import { selectCluters } from '../../reducers/api';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import {
+  chooseCluster,
+  selectFilters,
+  selectSelected,
+} from '../../reducers/wizard/sample';
+import { ClusterParameters } from '../../reducers/wizard/params';
+
+import { paramsMapping, passFilters } from './helpers';
 import TableToolbar from './Toolbar';
 
 const CLUSTERS_TABLE_COLUMNS = [

@@ -1,10 +1,11 @@
-import { DatePicker, Flex, FormGroup, Radio } from '@patternfly/react-core';
 import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { DatePicker, Flex, FormGroup, Radio } from '@patternfly/react-core';
+
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import {
   selectParamsComponent,
   updateParamsComponent,
-} from '../../redux/wizardSlice';
+} from '../../reducers/wizard/params';
 
 const LastCheckIn = (): React.FC => {
   const dispatch = useAppDispatch();

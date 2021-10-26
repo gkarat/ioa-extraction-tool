@@ -1,6 +1,6 @@
 import { SelectVariant } from '@patternfly/react-core';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../../redux/store';
+import { RootState } from '../store/store';
 
 import {
   ClusterPlatform,
@@ -8,7 +8,7 @@ import {
   Ebs,
   Managed,
   Version,
-} from '../../redux/wizardSlice';
+} from './wizard';
 
 export interface ClustersTableFilters {
   uuid: string;
@@ -79,8 +79,8 @@ const initialState: ClustersTableState = {
   activeToggle: 'uuid',
 };
 
-export const clustersTableSlice = createSlice({
-  name: 'clustersTable',
+export const sampleSlice = createSlice({
+  name: 'sample',
   initialState,
   reducers: {
     updateFilters: (state, action: PayloadAction<ClustersTableFilters>) => {
@@ -100,7 +100,6 @@ export const clustersTableSlice = createSlice({
         Object.entries(state.filters).forEach(([k, v]) => {
           k !== key && (updated[k] = v);
         });
-        console.log(updated);
         state.filters = updated;
       }
     },
@@ -124,15 +123,15 @@ export const {
   chooseCluster,
   resetSelectedCluster,
   updateActiveToggle,
-} = clustersTableSlice.actions;
+} = sampleSlice.actions;
 
 // selectors
 export const selectFilters = (state: RootState): ClustersTableFilters =>
-  state.clustersTable.filters;
+  state.wizard.sample.filters;
 export const selectSelected = (state: RootState): string =>
-  state.clustersTable.selected;
+  state.wizard.sample.selected;
 export const selectActiveToggle = (state: RootState): string =>
-  state.clustersTable.activeToggle;
+  state.wizard.sample.activeToggle;
 
 // reducer
-export default clustersTableSlice.reducer;
+export default sampleSlice.reducer;
