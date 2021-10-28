@@ -10,12 +10,12 @@ import {
 import {
   selectOptionsComponent,
   updateOptionsComponent,
-} from '../../reducers/api';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
+} from '../../../reducers/api';
+import { useAppDispatch, useAppSelector } from '../../../store/hooks';
 import {
   selectParamsComponent,
   updateParamsComponent,
-} from '../../reducers/wizard/params';
+} from '../../../reducers/wizard/params';
 
 interface MultiSelectProps {
   component: string;

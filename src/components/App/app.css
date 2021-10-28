@@ -1,3 +1,7 @@
 html, body, #root {
   height: 100%;
 }
+
+#extraction-main-grid {
+  min-height: 600px;
+}

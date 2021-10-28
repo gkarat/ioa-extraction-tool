@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 
 import { AppLayout } from '../AppLayout/AppLayout';
 import { AppRoutes } from '../../routes';
-import store from '../../store/store';
+import store from '../../store/appStore';
 
 const App: React.FunctionComponent = () => (
   <Router>

@@ -27,10 +27,22 @@ module.exports = (env) => ({
         // if they live under a 'fonts' or 'pficon' directory
         include: [
           path.resolve(__dirname, 'node_modules/patternfly/dist/fonts'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets/fonts'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets/pficon'),
-          path.resolve(__dirname, 'node_modules/@patternfly/patternfly/assets/fonts'),
-          path.resolve(__dirname, 'node_modules/@patternfly/patternfly/assets/pficon'),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-core/dist/styles/assets/fonts'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-core/dist/styles/assets/pficon'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/patternfly/assets/fonts'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/patternfly/assets/pficon'
+          ),
         ],
         use: {
           loader: 'file-loader',
@@ -70,14 +82,13 @@ module.exports = (env) => ({
         test: /\.svg$/,
         // only process SVG modules with this loader when they don't live under a 'bgimages',
         // 'fonts', or 'pficon' directory, those are handled with other loaders
-        include: (input) => (
-          (input.indexOf(BG_IMAGES_DIRNAME) === -1)
-            && (input.indexOf('fonts') === -1)
-            && (input.indexOf('background-filter') === -1)
-            && (input.indexOf('pficon') === -1)
-        ),
+        include: (input) =>
+          input.indexOf(BG_IMAGES_DIRNAME) === -1 &&
+          input.indexOf('fonts') === -1 &&
+          input.indexOf('background-filter') === -1 &&
+          input.indexOf('pficon') === -1,
         use: {
-          loader: 'raw-loader',
+          loader: 'svg-url-loader',
           options: {},
         },
       },
@@ -86,12 +97,30 @@ module.exports = (env) => ({
         include: [
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'node_modules/patternfly'),
-          path.resolve(__dirname, 'node_modules/@patternfly/patternfly/assets/images'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-styles/css/assets/images'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-core/dist/styles/assets/images'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-core/node_modules/@patternfly/react-styles/css/assets/images'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-table/node_modules/@patternfly/react-styles/css/assets/images'),
-          path.resolve(__dirname, 'node_modules/@patternfly/react-inline-edit-extension/node_modules/@patternfly/react-styles/css/assets/images'),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/patternfly/assets/images'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-styles/css/assets/images'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-core/dist/styles/assets/images'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-core/node_modules/@patternfly/react-styles/css/assets/images'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-table/node_modules/@patternfly/react-styles/css/assets/images'
+          ),
+          path.resolve(
+            __dirname,
+            'node_modules/@patternfly/react-inline-edit-extension/node_modules/@patternfly/react-styles/css/assets/images'
+          ),
         ],
         use: [
           {
@@ -120,9 +149,7 @@ module.exports = (env) => ({
       silent: true,
     }),
     new CopyPlugin({
-      patterns: [
-        { from: './src/favicon.png', to: 'images' },
-      ],
+      patterns: [{ from: './src/favicon.png', to: 'images' }],
     }),
   ],
   resolve: {

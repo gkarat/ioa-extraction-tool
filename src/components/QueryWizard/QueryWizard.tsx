@@ -10,11 +10,15 @@ import {
 import { selectSelected } from '../../reducers/wizard/sample';
 
 const SampleContent = React.lazy(
-  () => import(/* webpackChunkName: "SampleContent" */ './Sample')
+  () => import(/* webpackChunkName: "SampleContent" */ './StepTwo')
 );
 
 const ParamsContent = React.lazy(
-  () => import(/* webpackChunkName: "ParamsContent" */ './Params')
+  () => import(/* webpackChunkName: "ParamsContent" */ './StepOne')
+);
+
+const QueryCreatorContent = React.lazy(
+  () => import(/* webpackChunkName: "QueryCreatorContent" */ './StepThree')
 );
 
 const QueryWizard: React.FC = () => {
@@ -66,7 +70,17 @@ const QueryWizard: React.FC = () => {
       id: 'query-step',
       canJumpTo: OPEN_STEP_3,
       name: 'Extraction query',
-      component: <p>Step 3 content</p>,
+      component: (
+        <Suspense
+          fallback={
+            <Bullseye>
+              <Spinner />
+            </Bullseye>
+          }
+        >
+          <QueryCreatorContent />
+        </Suspense>
+      ),
       enableNext: false,
     },
     {
@@ -88,7 +102,7 @@ const QueryWizard: React.FC = () => {
     <Wizard
       steps={steps}
       className="query-wizard"
-      startAtStep={2}
+      startAtStep={current}
       navAriaLabel="Create query wizard - navigation"
       mainAriaLabel="Create query wizard"
       onNext={onNextBack}
