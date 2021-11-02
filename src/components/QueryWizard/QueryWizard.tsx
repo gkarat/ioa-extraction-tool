@@ -8,17 +8,19 @@ import {
   updateCurrent,
 } from '../../reducers/wizard/params';
 import { selectSelected } from '../../reducers/wizard/sample';
+import { selectName } from '../../reducers/wizard/desc';
 
 const SampleContent = React.lazy(
   () => import(/* webpackChunkName: "SampleContent" */ './StepTwo')
 );
-
 const ParamsContent = React.lazy(
   () => import(/* webpackChunkName: "ParamsContent" */ './StepOne')
 );
-
 const QueryCreatorContent = React.lazy(
   () => import(/* webpackChunkName: "QueryCreatorContent" */ './StepThree')
+);
+const DescriptionContent = React.lazy(
+  () => import(/* webpackChunkName: "DescriptionContent" */ './StepFour')
 );
 
 const QueryWizard: React.FC = () => {
@@ -26,9 +28,12 @@ const QueryWizard: React.FC = () => {
   const version = useAppSelector(selectParamsComponent('version'));
   const current = useAppSelector(selectCurrent);
   const sampleCluster = useAppSelector(selectSelected);
+  const name = useAppSelector(selectName);
 
   const OPEN_STEP_2 = version.length > 0;
   const OPEN_STEP_3 = sampleCluster?.uuid?.length > 0;
+  const OPEN_STEP_4 = false;
+  const OPEN_STEP_5 = name;
 
   const steps = [
     {
@@ -81,11 +86,29 @@ const QueryWizard: React.FC = () => {
           <QueryCreatorContent />
         </Suspense>
       ),
-      enableNext: false,
+      enableNext: OPEN_STEP_4,
+    },
+    {
+      id: 'description-step',
+      canJumpTo: OPEN_STEP_4,
+      name: 'Description',
+      component: (
+        <Suspense
+          fallback={
+            <Bullseye>
+              <Spinner />
+            </Bullseye>
+          }
+        >
+          <DescriptionContent />
+        </Suspense>
+      ),
+      enableNext: OPEN_STEP_5,
+      nextButtonText: 'Finish',
     },
     {
       id: 'review-step',
-      canJumpTo: false,
+      canJumpTo: OPEN_STEP_5,
       name: 'Review',
       component: <p>Review step content</p>,
       enableNext: false,
@@ -102,7 +125,7 @@ const QueryWizard: React.FC = () => {
     <Wizard
       steps={steps}
       className="query-wizard"
-      startAtStep={current}
+      startAtStep={4}
       navAriaLabel="Create query wizard - navigation"
       mainAriaLabel="Create query wizard"
       onNext={onNextBack}
