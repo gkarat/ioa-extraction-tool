@@ -44,7 +44,6 @@
     "imagemin": "^8.0.0",
     "jest": "^27.0.4",
     "mini-css-extract-plugin": "^1.6.0",
-    "node-sass": "^6.0.1",
     "postcss": "^8.3.1",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
@@ -78,6 +77,8 @@
     "json-to-extraction-query": "^1.1.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-redux": "^7.2.5"
+    "react-redux": "^7.2.5",
+    "sirv": "^1.0.18",
+    "sirv-cli": "^1.0.14"
   }
 }
