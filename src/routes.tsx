@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Route, RouteComponentProps, Switch } from 'react-router-dom';
+import { Route, RouteComponentProps, Switch, Redirect } from 'react-router-dom';
 
 import WizardPage from './components/WizardPage/WizardPage';
 import { NotFound } from './components/NotFound/NotFound';
@@ -75,6 +75,7 @@ const AppRoutes = (): React.ReactElement => (
         title={title}
       />
     ))}
+    <Redirect from="*" to="/query" />
     <PageNotFound title="404 Page Not Found" />
   </Switch>
 );

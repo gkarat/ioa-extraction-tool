@@ -30,6 +30,7 @@ export const { updateName, updateDescription } = descSlice.actions;
 // selectors
 export const selectName = (state: RootState) => state.wizard.desc.name;
 export const selectDesc = (state: RootState) => state.wizard.desc.description;
+export const selectDescription = (state: RootState) => state.wizard.desc;
 
 // reducer
 export default descSlice.reducer;

@@ -22,7 +22,6 @@ import {
   selectSelected,
 } from '../../reducers/wizard/sample';
 import { ClusterParameters } from '../../reducers/wizard/params';
-
 import { paramsMapping, passFilters } from './helpers';
 import TableToolbar from './Toolbar';
 

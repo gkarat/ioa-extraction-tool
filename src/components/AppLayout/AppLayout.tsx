@@ -12,7 +12,7 @@ import {
 } from '@patternfly/react-core';
 
 import { routes, IAppRoute, IAppRouteGroup } from '../../routes';
-import logo from '../../bgimages/Patternfly-Logo.svg';
+import logo from '../../bgimages/ioa-logo.svg';
 
 interface IAppLayout {
   children: React.ReactNode;

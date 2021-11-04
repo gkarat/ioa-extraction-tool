@@ -64,6 +64,12 @@ interface WizardState {
   submitted: boolean;
 }
 
+export const managedMapping = {
+  all: 'All',
+  managed: 'Only managed',
+  'non-managed': 'Only non-managed',
+};
+
 const initialState: WizardState = {
   params: {
     version: [],
